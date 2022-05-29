@@ -1,0 +1,20 @@
+FROM node:latest
+
+#Create de app directtory
+WORKDIR /user/src/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+
+
+COPY package*.json ./
+
+RUN npm Install
+
+# Bundle app source => COPY everything from current directory to the container working dir
+COPY . .
+
+EXPOSE 3335
+
+CMD ["npm","run","dev:server"]
